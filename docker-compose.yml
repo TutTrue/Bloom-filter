@@ -1,0 +1,133 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  producer:
+    build:
+      context: ./producer
+      dockerfile: Dockerfile
+    volumes:
+      - ./producer:/app
+    command: python3 producer.py
+    depends_on:
+      - redis
+
+  aggregation:
+    build:
+      context: ./aggregation
+      dockerfile: Dockerfile
+    volumes:
+      - ./aggregation:/app
+    command: python3 aggregation.py
+    depends_on:
+      - redis
+
+
+  consumer1:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+  consumer2:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+  consumer3:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+  consumer4:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+  consumer5:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+
+  consumer6:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+
+  consumer7:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+
+  consumer8:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+
+  consumer9:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
+
+  consumer10:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    volumes:
+      - ./consumer:/app
+    command: python3 consumer.py
+    depends_on:
+      - redis
